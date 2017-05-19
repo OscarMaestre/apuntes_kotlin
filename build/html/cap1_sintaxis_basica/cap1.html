@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sintaxis básica &#8212; documentación de Apuntes Kotlin - 1.0</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="documentación de Apuntes Kotlin - 1.0" href="../index.html" />
+    <link rel="prev" title="Apuntes de Kotlin" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="contents topic" id="contenidos">
+<p class="topic-title first">Contenidos</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sintaxis-basica" id="id1">Sintaxis básica</a><ul>
+<li><a class="reference internal" href="#paquetes" id="id2">Paquetes</a></li>
+<li><a class="reference internal" href="#funciones" id="id3">Funciones</a></li>
+<li><a class="reference internal" href="#variables" id="id4">Variables</a></li>
+<li><a class="reference internal" href="#comentarios" id="id5">Comentarios</a></li>
+<li><a class="reference internal" href="#cadenas" id="id6">Cadenas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sintaxis-basica">
+<h1><a class="toc-backref" href="#id1">Sintaxis básica</a><a class="headerlink" href="#sintaxis-basica" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="paquetes">
+<h2><a class="toc-backref" href="#id2">Paquetes</a><a class="headerlink" href="#paquetes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La definición del paquete debe ir en la primera línea.</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">com.acme.aplicacion</span>
+</pre></div>
+</div>
+<p>Al contrario que en Java no es obligatorio que la estructura de directorios y la de paquetes coincida.</p>
+</div>
+<div class="section" id="funciones">
+<h2><a class="toc-backref" href="#id3">Funciones</a><a class="headerlink" href="#funciones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las funciones llevan el tipo devuelto al final:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">sumar</span><span class="p">(</span><span class="n">num1</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">num2</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">num1</span> <span class="p">+</span> <span class="n">num2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Si una función no devuelve nada puede hacer dos cosas:</p>
+<ul class="simple">
+<li>Indicar que el tipo devuelto es <code class="docutils literal"><span class="pre">Unit</span></code>.</li>
+<li>No indicar ningún tipo</li>
+</ul>
+<p>Esta funcion imprime un mensaje:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">imprimir</span> <span class="p">(</span> <span class="n">mensaje</span> <span class="p">:</span> <span class="n">String</span> <span class="p">)</span> <span class="p">:</span> <span class="n">Unit</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;--------------&quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;--------------&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Y esta también (observar que no incluimos <code class="docutils literal"><span class="pre">Unit</span></code>):</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">imprimir</span> <span class="p">(</span> <span class="n">mensaje</span> <span class="p">:</span> <span class="n">String</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;--------------&quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;--------------&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="variables">
+<h2><a class="toc-backref" href="#id4">Variables</a><a class="headerlink" href="#variables" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Puede haber variables de solo lectura (es decir, constantes) o variables de lectura y escritura. En
+cada variable se puede indicar el tipo, aunque Kotlin puede deducirlo y asignarle un tipo.</p>
+<p>Una constante se puede definir de estas maneras:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">a</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="m">3</span> <span class="c1">//Creamos a de tipo Int y le asignamos 3</span>
+<span class="k">val</span> <span class="py">b</span><span class="p">=</span><span class="m">3</span>      <span class="c1">//Kotlin deduce que el tipo es un Int</span>
+<span class="k">val</span> <span class="py">c</span><span class="p">:</span><span class="n">Int</span>    <span class="c1">//Se crea C, pero aún no se ha inicializado</span>
+<span class="n">c</span> <span class="p">=</span> <span class="m">5</span>        <span class="c1">//En este punto se inicializa c</span>
+<span class="n">c</span> <span class="p">=</span> <span class="m">7</span>        <span class="c1">//Esto dará error.</span>
+</pre></div>
+</div>
+<p>Las variables son muy parecidas, pero las variables deben inicializarse. A continuación se muestran
+algunas definiciones de variables (obsérvese que es casi el mismo código de antes):</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">var</span> <span class="py">a</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="m">3</span>   <span class="c1">//Creamos a de tipo Int y le asignamos 3</span>
+<span class="k">var</span> <span class="py">b</span><span class="p">=</span><span class="m">3</span>         <span class="c1">//Kotlin deduce que el tipo es un Int</span>
+<span class="k">var</span> <span class="py">c</span><span class="p">:</span><span class="n">Int</span>       <span class="c1">//Esto ahora sí da error</span>
+<span class="k">var</span> <span class="py">c</span><span class="p">:</span><span class="n">Int</span><span class="p">=</span> <span class="m">5</span>    <span class="c1">//En este punto se inicializa c</span>
+<span class="n">c</span> <span class="p">=</span> <span class="m">7</span>           <span class="c1">//Y esto ahora NO DARÁ ERROR.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comentarios">
+<h2><a class="toc-backref" href="#id5">Comentarios</a><a class="headerlink" href="#comentarios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Funcionan igual que en Java, usando /* y */ o // para comentarios en una sola línea.</p>
+</div>
+<div class="section" id="cadenas">
+<h2><a class="toc-backref" href="#id6">Cadenas</a><a class="headerlink" href="#cadenas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Son más potente que en Java ya que usando el símbolo $ se puede &#8220;extraer&#8221; el contenido de una variable e imprimirlo.</p>
+<p>Así, dado este programa</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span> <span class="p">(</span><span class="n">argumentos</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span>  <span class="p">{</span>
+    <span class="k">val</span> <span class="py">respuesta</span> <span class="p">=</span> <span class="m">42</span>
+    <span class="k">val</span> <span class="py">mensaje</span> <span class="p">=</span> <span class="s">&quot;La respuesta es $respuesta&quot;</span>   
+    <span class="n">println</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>El resultado que obtenemos es:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>La respuesta es 42
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sintaxis básica</a><ul>
+<li><a class="reference internal" href="#paquetes">Paquetes</a></li>
+<li><a class="reference internal" href="#funciones">Funciones</a></li>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+<li><a class="reference internal" href="#comentarios">Comentarios</a></li>
+<li><a class="reference internal" href="#cadenas">Cadenas</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="capítulo anterior">Apuntes de Kotlin</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/cap1_sintaxis_basica/cap1.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir a" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Oscar.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/cap1_sintaxis_basica/cap1.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
