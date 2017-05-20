@@ -50,6 +50,20 @@
 <li><a class="reference internal" href="#variables" id="id4">Variables</a></li>
 <li><a class="reference internal" href="#comentarios" id="id5">Comentarios</a></li>
 <li><a class="reference internal" href="#cadenas" id="id6">Cadenas</a></li>
+<li><a class="reference internal" href="#decisiones-con-if" id="id7">Decisiones con <code class="docutils literal"><span class="pre">if</span></code></a></li>
+<li><a class="reference internal" href="#valores-null" id="id8">Valores <code class="docutils literal"><span class="pre">null</span></code></a></li>
+<li><a class="reference internal" href="#el-operador-is-y-las-conversiones-de-tipo-casts" id="id9">El operador <code class="docutils literal"><span class="pre">is</span></code> y las conversiones de tipo (casts)</a></li>
+<li><a class="reference internal" href="#bucles" id="id10">Bucles</a></li>
+<li><a class="reference internal" href="#condiciones-multiples-when-en-lugar-de-switch" id="id11">Condiciones múltiples: <code class="docutils literal"><span class="pre">when</span></code> en lugar de <code class="docutils literal"><span class="pre">switch</span></code></a></li>
+<li><a class="reference internal" href="#rangos" id="id12">Rangos</a></li>
+<li><a class="reference internal" href="#operaciones-de-e-s-basica" id="id13">Operaciones de E/S básica</a></li>
+<li><a class="reference internal" href="#problemas-propuestos" id="id14">Problemas propuestos</a><ul>
+<li><a class="reference internal" href="#saludo" id="id15">Saludo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#saludo-selectivo" id="id16">Saludo selectivo</a></li>
+<li><a class="reference internal" href="#suma-de-numeros" id="id17">Suma de números</a></li>
+<li><a class="reference internal" href="#operaciones-selectivas" id="id18">Operaciones selectivas</a></li>
 </ul>
 </li>
 </ul>
@@ -122,7 +136,7 @@ algunas definiciones de variables (obsérvese que es casi el mismo código de an
 </div>
 <div class="section" id="cadenas">
 <h2><a class="toc-backref" href="#id6">Cadenas</a><a class="headerlink" href="#cadenas" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Son más potente que en Java ya que usando el símbolo $ se puede &#8220;extraer&#8221; el contenido de una variable e imprimirlo.</p>
+<p>Son más potentes que en Java ya que usando el símbolo $ se puede &#8220;extraer&#8221; el contenido de una variable e imprimirlo.</p>
 <p>Así, dado este programa</p>
 <div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span> <span class="p">(</span><span class="n">argumentos</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span>  <span class="p">{</span>
     <span class="k">val</span> <span class="py">respuesta</span> <span class="p">=</span> <span class="m">42</span>
@@ -135,6 +149,171 @@ algunas definiciones de variables (obsérvese que es casi el mismo código de an
 <div class="highlight-text"><div class="highlight"><pre><span></span>La respuesta es 42
 </pre></div>
 </div>
+</div>
+<div class="section" id="decisiones-con-if">
+<h2><a class="toc-backref" href="#id7">Decisiones con <code class="docutils literal"><span class="pre">if</span></code></a><a class="headerlink" href="#decisiones-con-if" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Funcionan exactamente igual que en Java aunque también pueden usarse como expresiones</p>
+<p>Sentencias <code class="docutils literal"><span class="pre">if</span></code> al estilo Java:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">&gt;</span><span class="n">b</span><span class="p">){</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;a es mayor que b&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;a no es mayor que b&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Decisiones como expresiones</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="cm">/*Si &quot;a&quot; es mayor que &quot;b&quot; el valor de &quot;a&quot; se</span>
+<span class="cm">  asigna a &quot;mayor&quot;. En caso contrario dentro</span>
+<span class="cm">  de &quot;mayor&quot; se almacena el valor &quot;b&quot; */</span>
+<span class="k">val</span> <span class="py">mayor</span><span class="p">=</span><span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">&gt;</span><span class="n">b</span><span class="p">)</span> <span class="n">a</span> <span class="k">else</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="valores-null">
+<h2><a class="toc-backref" href="#id8">Valores <code class="docutils literal"><span class="pre">null</span></code></a><a class="headerlink" href="#valores-null" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las reglas para los tipos son un poco distintos de Java, en concreto examinemos
+el código siguiente:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">var</span> <span class="py">a</span><span class="p">:</span><span class="n">Int</span><span class="p">=</span><span class="m">3</span>
+<span class="n">a</span><span class="p">=</span><span class="m">4</span>
+<span class="cm">/* Kotlin no permite esto,</span>
+<span class="cm">   en a SOLO PUEDE HABER</span>
+<span class="cm">   UN ENTERO*/</span>
+<span class="n">a</span><span class="p">=</span><span class="k">null</span>
+</pre></div>
+</div>
+<p>Es decir, dado que <code class="docutils literal"><span class="pre">null</span></code> no es un Int, no se acepta el intentar almacenar <code class="docutils literal"><span class="pre">null</span></code> dentro de la referencia <code class="docutils literal"><span class="pre">a</span></code>. Para permitir que un tipo sea nulo se debe usar una interrogación en el tipo, de la forma siguiente:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">var</span> <span class="py">a</span><span class="p">:</span><span class="n">Int</span><span class="p">?=</span><span class="m">3</span>
+<span class="n">a</span><span class="p">=</span><span class="m">4</span>
+<span class="cm">/* Esto ahora sí se permite*/</span>
+<span class="n">a</span><span class="p">=</span><span class="k">null</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="el-operador-is-y-las-conversiones-de-tipo-casts">
+<h2><a class="toc-backref" href="#id9">El operador <code class="docutils literal"><span class="pre">is</span></code> y las conversiones de tipo (casts)</a><a class="headerlink" href="#el-operador-is-y-las-conversiones-de-tipo-casts" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En Kotlin, el operador <code class="docutils literal"><span class="pre">is</span></code> permite comprobar si una referencia es de un tipo dado, por ejemplo comprobar si es un <code class="docutils literal"><span class="pre">String</span></code>. Si se usa <code class="docutils literal"><span class="pre">is</span></code> <strong>ya no hace falta hacer ningún &#8220;cast&#8221;</strong>.</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">getLongitud</span><span class="p">(</span><span class="n">objeto</span> <span class="p">:</span> <span class="n">Any</span> <span class="p">)</span> <span class="p">:</span> <span class="n">Int</span><span class="p">?{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">objeto</span> <span class="k">is</span> <span class="n">String</span><span class="p">){</span>
+        <span class="c1">//Aqui ya no hace falta usar un cast</span>
+        <span class="k">val</span> <span class="py">longitud</span><span class="p">=</span><span class="n">nombre</span><span class="p">.</span><span class="n">length</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">longitud</span>
+    <span class="p">}</span>
+    <span class="c1">//Si llegamos aquí, se supone que objeto</span>
+    <span class="c1">//es del tipo Any y podríamos hacer</span>
+    <span class="c1">//otra comprobación o quizá incluso</span>
+    <span class="c1">//hacer esto</span>
+    <span class="k">return</span> <span class="k">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bucles">
+<h2><a class="toc-backref" href="#id10">Bucles</a><a class="headerlink" href="#bucles" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los bucles <code class="docutils literal"><span class="pre">for</span></code> y <code class="docutils literal"><span class="pre">while</span></code> funcionan igual que en Java</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="c1">//Esto construye una lista</span>
+<span class="k">var</span> <span class="py">elementos</span><span class="p">=</span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;manzana&quot;</span><span class="p">,</span> <span class="s">&quot;pera&quot;</span><span class="p">,</span> <span class="s">&quot;kiwi&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">elemento</span> <span class="k">in</span> <span class="n">elementos</span><span class="p">){</span>
+    <span class="n">println</span> <span class="p">(</span><span class="n">elemento</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="py">elementos</span><span class="p">=</span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;manzana&quot;</span><span class="p">,</span> <span class="s">&quot;pera&quot;</span><span class="p">,</span> <span class="s">&quot;kiwi&quot;</span><span class="p">)</span>
+<span class="k">var</span> <span class="py">posicion</span><span class="p">=</span><span class="m">0</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">posicion</span> <span class="p">&lt;</span> <span class="n">elementos</span><span class="p">.</span><span class="n">size</span><span class="p">){</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;${elementos[posicion]}&quot;</span><span class="p">)</span>
+    <span class="n">posicion</span><span class="p">++</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="condiciones-multiples-when-en-lugar-de-switch">
+<h2><a class="toc-backref" href="#id11">Condiciones múltiples: <code class="docutils literal"><span class="pre">when</span></code> en lugar de <code class="docutils literal"><span class="pre">switch</span></code></a><a class="headerlink" href="#condiciones-multiples-when-en-lugar-de-switch" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En Kotlin la sentencia <code class="docutils literal"><span class="pre">switch</span></code> no existe, pero en su lugar está <code class="docutils literal"><span class="pre">when</span></code>, que es más flexible que su equivalente en Java.</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">identificar</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+    <span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">){</span>
+        <span class="m">42</span><span class="p">-&gt;{</span>
+            <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;Es el 42&quot;</span> <span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">in</span> <span class="p">(</span><span class="m">0.</span><span class="p">.</span><span class="m">30</span><span class="p">)-&gt;{</span>
+            <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;Está en el rango 0..30&quot;</span> <span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">-&gt;{</span>
+            <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;No sé muy bien el rango de x&quot;</span> <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">identificar</span> <span class="p">(</span><span class="m">200</span><span class="p">)</span>
+<span class="n">identificar</span> <span class="p">(-</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rangos">
+<h2><a class="toc-backref" href="#id12">Rangos</a><a class="headerlink" href="#rangos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se pueden usar rangos numéricos que junto a las operaciones <code class="docutils literal"><span class="pre">in</span></code> y <code class="docutils literal"><span class="pre">!in</span></code> permiten comprobar muy fácilmente si un número está en un rango dado.</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="p">!</span><span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="m">10</span><span class="p">){</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;El número no está entre y 10)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operaciones-de-e-s-basica">
+<h2><a class="toc-backref" href="#id13">Operaciones de E/S básica</a><a class="headerlink" href="#operaciones-de-e-s-basica" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ya hemos visto que <code class="docutils literal"><span class="pre">println</span></code> permite escribir en pantalla. La sentencia <code class="docutils literal"><span class="pre">readLine</span></code> permite leer una línea del teclado. Dicha línea se devuelve como un <code class="docutils literal"><span class="pre">String?</span></code>, es decir <strong>si existe una línea, nos la devuelve, pero si no se pudo leer nada se nos devuelve un null</strong>.</p>
+<p>Una variante de <code class="docutils literal"><span class="pre">println</span></code> es <code class="docutils literal"><span class="pre">print</span></code> que escribe algo en una línea sin saltar despues a la siguiente.</p>
+</div>
+<div class="section" id="problemas-propuestos">
+<h2><a class="toc-backref" href="#id14">Problemas propuestos</a><a class="headerlink" href="#problemas-propuestos" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="saludo">
+<h3><a class="toc-backref" href="#id15">Saludo</a><a class="headerlink" href="#saludo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><em>Escribir un programa que pregunte al usuario su nombre y despues le salude</em></p>
+<p>Una posible solución es esta:</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">argumentos</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;){</span>
+    <span class="n">print</span> <span class="p">(</span><span class="s">&quot;Introduce tu nombre:&quot;</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">nombre</span> <span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">readLine</span><span class="p">()</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;Hola $nombre&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="saludo-selectivo">
+<h2><a class="toc-backref" href="#id16">Saludo selectivo</a><a class="headerlink" href="#saludo-selectivo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><em>Modificar el programa anterior para que solo se salude con sus nombres a los usuarios Alice o Bob. El resto de personas simplemente verán el mensaje &#8220;Hola&#8221;.</em></p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">argumentos</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;){</span>
+    <span class="n">print</span> <span class="p">(</span> <span class="s">&quot;Escribe tu nombre:&quot;</span> <span class="p">)</span>
+    <span class="k">val</span> <span class="py">nombre</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">readLine</span><span class="p">()</span>
+    <span class="k">when</span> <span class="p">(</span><span class="n">nombre</span><span class="p">){</span>
+        <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="s">&quot;Bob&quot;</span> <span class="p">-&gt;</span>   <span class="p">{</span> <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;Hola $nombre&quot;</span><span class="p">)</span> <span class="p">}</span>
+        <span class="k">else</span> <span class="p">-&gt;</span>             <span class="p">{</span> <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;Hola &quot;</span><span class="p">)</span>        <span class="p">}</span>  
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="suma-de-numeros">
+<h2><a class="toc-backref" href="#id17">Suma de números</a><a class="headerlink" href="#suma-de-numeros" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><em>Escribir un programa que pida al usuario un número n e imprima la suma de números desde 1 hasta n</em>.</p>
+<div class="highlight-kotlin"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span> <span class="p">(</span> <span class="n">argumentos</span> <span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span> <span class="p">(</span> <span class="s">&quot;Escribe un número:&quot;</span> <span class="p">)</span>
+    <span class="k">var</span> <span class="py">cadN</span> <span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">readLine</span><span class="p">()</span>
+    <span class="k">val</span> <span class="py">n</span><span class="p">=</span><span class="n">cadN</span><span class="o">?.</span><span class="n">toInt</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">suma</span> <span class="p">=</span> <span class="m">0</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="n">i</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">suma</span> <span class="p">=</span> <span class="n">suma</span> <span class="p">+</span> <span class="n">i</span>
+    <span class="p">}</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;La suma desde 1 hasta $n es $suma&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operaciones-selectivas">
+<h2><a class="toc-backref" href="#id18">Operaciones selectivas</a><a class="headerlink" href="#operaciones-selectivas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Crear un programa que pida al usuario un numero <em>n</em> y le ofrezca la posibilidad de hacer la suma o el producto de los valores comprendidos entre 1 y <em>n</em>.</p>
+<p>Write a program that prints a multiplication table for numbers up to 12.
+Write a program that prints all prime numbers. (Note: if your programming language does not support arbitrary size numbers, printing all primes up to the largest number you can easily represent is fine too.)
+Write a guessing game where the user has to guess a secret number. After every guess the program tells the user whether their number was too large or too small. At the end the number of tries needed should be printed. I counts only as one try if they input the same number multiple times consecutively.
+Write a program that prints the next 20 leap years.
+Write a program that computes</p>
 </div>
 </div>
 
@@ -152,6 +331,20 @@ algunas definiciones de variables (obsérvese que es casi el mismo código de an
 <li><a class="reference internal" href="#variables">Variables</a></li>
 <li><a class="reference internal" href="#comentarios">Comentarios</a></li>
 <li><a class="reference internal" href="#cadenas">Cadenas</a></li>
+<li><a class="reference internal" href="#decisiones-con-if">Decisiones con <code class="docutils literal"><span class="pre">if</span></code></a></li>
+<li><a class="reference internal" href="#valores-null">Valores <code class="docutils literal"><span class="pre">null</span></code></a></li>
+<li><a class="reference internal" href="#el-operador-is-y-las-conversiones-de-tipo-casts">El operador <code class="docutils literal"><span class="pre">is</span></code> y las conversiones de tipo (casts)</a></li>
+<li><a class="reference internal" href="#bucles">Bucles</a></li>
+<li><a class="reference internal" href="#condiciones-multiples-when-en-lugar-de-switch">Condiciones múltiples: <code class="docutils literal"><span class="pre">when</span></code> en lugar de <code class="docutils literal"><span class="pre">switch</span></code></a></li>
+<li><a class="reference internal" href="#rangos">Rangos</a></li>
+<li><a class="reference internal" href="#operaciones-de-e-s-basica">Operaciones de E/S básica</a></li>
+<li><a class="reference internal" href="#problemas-propuestos">Problemas propuestos</a><ul>
+<li><a class="reference internal" href="#saludo">Saludo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#saludo-selectivo">Saludo selectivo</a></li>
+<li><a class="reference internal" href="#suma-de-numeros">Suma de números</a></li>
+<li><a class="reference internal" href="#operaciones-selectivas">Operaciones selectivas</a></li>
 </ul>
 </li>
 </ul>
