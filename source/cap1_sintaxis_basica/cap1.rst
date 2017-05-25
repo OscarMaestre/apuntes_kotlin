@@ -241,7 +241,9 @@ Una posible solución es esta:
 
 
 Saludo selectivo
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 *Modificar el programa anterior para que solo se salude con sus nombres a los usuarios Alice o Bob. El resto de personas simplemente verán el mensaje "Hola".*
 
 .. literalinclude:: programas/programa_2_saludo_selectivo.kt
@@ -250,7 +252,9 @@ Saludo selectivo
 
 
 Suma de números
---------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 *Escribir un programa que pida al usuario un número n e imprima la suma de números desde 1 hasta n*.
 
 .. literalinclude:: programas/programa_3_sumas_n.kt
@@ -258,13 +262,42 @@ Suma de números
 
 
 Operaciones selectivas
----------------------------
-Crear un programa que pida al usuario un numero *n* y le ofrezca la posibilidad de hacer la suma o el producto de los valores comprendidos entre 1 y *n*.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+*Crear un programa que pida al usuario un numero ``n`` y le ofrezca la posibilidad de hacer la suma o el producto de los valores comprendidos entre 1 y ``n``.*
 
-Write a program that prints a multiplication table for numbers up to 12.
-Write a program that prints all prime numbers. (Note: if your programming language does not support arbitrary size numbers, printing all primes up to the largest number you can easily represent is fine too.)
-Write a guessing game where the user has to guess a secret number. After every guess the program tells the user whether their number was too large or too small. At the end the number of tries needed should be printed. I counts only as one try if they input the same number multiple times consecutively.
+.. literalinclude:: programas/programa_4_operaciones_selectivas.kt
+   :language: kotlin
+
+
+Tablas de multiplicar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+*Escribir un programa que pida al usuario un número ``n`` y despues escriba la tabla de multiplicar de ese número*
+
+.. literalinclude:: programas/programa_5_tablas.kt
+   :language: kotlin
+
+Números primos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Escribir un programa que imprima todos los números primos hasta un cierto número ``n`` que se introduce por teclado*
+
+.. literalinclude:: programas/programa_6_tabla_primos.kt
+   :language: kotlin
+
+Juego:adivina el número
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Crear un programa en el que la máquina piense un número entre 0 y 100. El jugador irá introduciendo números para intentar adivinarlo y el programa indicará si el usuario ha acertado. Si el usuario no acierta se deberá decir si el número secreto es mayor o menor. Permitir al usuario dar nuevos números hasta que acierte y cuando acierte decirle el número de intentos que ha necesitado. Si el usuario introduce dos o más veces seguidas el mismo número solo contará como un intento*
+
+En este programa usaremos ``Random``, un objeto Java que permite generar números aleatorios. Para ello, deberemos usar el ``import`` correcto al principio del programa.
+
+A continuación se muestra una solución. No se han introducido todas las comprobaciones para mantener el código en un tamaño que lo haga más comprensible.
+
+.. literalinclude:: programas/programa_7_adivina_numeros.kt
+   :language: kotlin
+
 Write a program that prints the next 20 leap years.
-Write a program that computes 
