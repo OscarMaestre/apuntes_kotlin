@@ -300,4 +300,18 @@ A continuación se muestra una solución. No se han introducido todas las compro
 .. literalinclude:: programas/programa_7_adivina_numeros.kt
    :language: kotlin
 
-Write a program that prints the next 20 leap years.
+
+Años bisiestos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Escribir un programa que imprima los próximos 20 años bisiestos.*
+
+El algoritmo puede encontrarse en `Wikipedia <https://es.wikipedia.org/wiki/A%C3%B1o_bisiesto>` y básicamente un año bisiesto es aquel que
+
+* Es divisible por 4 y además se cumple al menos una de las siguientes condiciones:
+* O no es divisible por 100
+* O es divisible por 400.
+
+
+.. literalinclude:: programas/programa_8_bisiestos.kt
+   :language: kotlin
