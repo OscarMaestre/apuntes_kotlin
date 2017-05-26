@@ -12,6 +12,7 @@ Contenidos:
    :maxdepth: 2
    
    cap1_sintaxis_basica/cap1
+   cap2_fundamentos/cap2
 
 Indices and tables
 ==================

@@ -1,0 +1,106 @@
+:heading: value
+
+.. contents::
+
+Fundamentos del lenguaje
+==============================
+
+
+Objetos
+--------------------------------------------------------------------
+
+En Kotlin todo es un objeto y por lo tanto sobre cualquier variable se pueden consultar propiedades o ejecutar métodos. Por ejemplo, este código es válido en Kotlin
+
+.. code-block:: kotlin
+
+    "Hola".length()
+    
+Si se conoce Ruby es muy posible que se haya reconocido la influencia de este lenguaje en Kotlin.
+
+Encapsulación ("boxing")
+--------------------------------------------------------------------
+
+Kotlin utiliza tanto sus propios tipos como los tipos de Java definidos en la máquina virtual JVM. Por ejemplo, las variables de tipo ``Int`` se almacenan a nivel interno como un tipo Java en la JVM pero las variables de tipo ``Int?`` (recordemos, sí aceptan valores ``null``) en realidad se encapsulan en tipos de Kotlin.
+
+Esto significa que podemos comparar los valores de un tipo ``Int`` y de uno ``Int?`` sin tener ningún problema pero *no debemos comparar la identidad de dos variables de distinto tipo,  ya que podemos obtener un valor falso*
+
+Si ejecutamos el siguiente programa:
+
+.. literalinclude:: ejemplos/ejemplo_identidad_tipos.kt
+   :language: kotlin
+   
+Obtendremos el siguiente resultado
+   
+.. program-output:: java -jar cap2_fundamentos/ejemplos/ejemplo_identidad_tipos.jar
+
+De hecho, ni siquiera es posible compilar la comparación de variables de tipos distintos
+
+.. code-block:: kotlin
+
+    var respuesta1 : Int?  = 42
+    var respuesta2 : Long? = 42
+    //El compilador se queja en esta línea
+    if ( respuesta1 == respuesta2 ) println ( "Respuestas iguales" )
+
+Tipos numéricos
+--------------------------------------------------------------------
+
+
+Los números funcionan de forma similar a los números en Java pero con una diferencia importante.
+
+.. WARNING::
+   Kotlin no hace conversiones implícitas entre tipos ni siquiera cuando intentemos almacenar valor un tipo pequeño (como ``Byte``) dentro de un tipo más grande (como ``Int``). Es difícil que se produzcan error porque el código erróneo ni siquiera compilará.
+   
+Así, este código falla
+
+.. code-block:: kotlin
+
+    val unByte : Byte = 12
+    val unInt : Int = unByte
+
+Y este código también falla
+
+.. code-block:: kotlin
+
+    val a : Int? = 3
+    val b: Long? = 10L
+    val c = a + b
+    
+Visto esto, los tipos básicos en Kotlin son los siguientes:
+
+* ``Double``, para números con decimales de doble precisión.
+* ``Float``, para números con decimales de precisión simple.
+* ``Long``, para números enteros largos.
+* ``Int``, para números enteros.
+* ``Short``, para números enteros cortos.
+* ``Byte``, para números enteros muy cortos.
+
+Cuando se almacenan valores en una variable o constante se usan los mismos sufijos que en Java. También se incluye la posibilidad de usar el guión bajo ("_") como separador
+en números sin que eso afecte al número:
+
+.. code-block:: kotlin
+
+    val unLong              : Long  = 42L
+    val unLongEnHexadecimal : Long  = 0xCAFB
+    val unIntEnBinario      : Long  = 0b010010100101
+    val diezMillones        : Long  = 10_000_000
+    val unDouble            : Double= 6.02e23
+    val unFloat             : Float = 42.42f
+
+Problemas propuestos
+--------------------------------------------------------------------
+
+Tamaños de los tipos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Crear un programa que imprima los números más grandes y más pequeños que pueden almacenar los tipos básicos en Kotlin*
+
+Por fortuna, Kotlin (al igual que Java) incluye constantes dentro de las clases que permiten consultar estos valores muy fácilmente.
+
+.. literalinclude:: programas/programa_1_tam_tipos_basicos.kt
+   :language: kotlin
+   
+Obtendremos el siguiente resultado
+   
+.. program-output:: java -jar cap2_fundamentos/programas/programa_1_tam_tipos_basicos.jar
+
