@@ -87,6 +87,63 @@ en números sin que eso afecte al número:
     val unDouble            : Double= 6.02e23
     val unFloat             : Float = 42.42f
 
+
+Además, todos los tipos numéricos ofrecen métodos para poder convertir entre distintos tipos:
+
+* ``toDouble()``
+* ``toFloat()``
+* ``toLong()``
+* ``toInt()``
+* ``toShort()``
+* ``toByte()``
+* ``toChar()``
+
+Además, todos tipos numéricos ``Int `` y ``Long`` soportan operaciones a nivel de bit. Incluso algunas funciones pueden usarse como operadores en lugar de tipo. Las operaciones a nivel de bit son:
+
+* ``shl(cantidadDeBits)``. De Signed Shift Left o *desplazamiento de bits a la izquierda conservando el bit de signo*.
+* ``shr(cantidadDeBits)``. De Signed Shift Right o *desplazamiento de bits a la derecha conservando el bit de signo*.
+* ``ushr(cantidadDeBits)``. De Unsigned Shift Right o *desplazamiento de bits a la derecha (incluyendo y desplazando el bit de signo)*.
+* ``and(numero)``. Efectúa el ``and`` de los bits.
+* ``or(numero)``. Efectúa el ``or`` de los bits.
+* ``xor(numero)``. Efectúa el ``xor`` de los bits.
+* ``inv(numero)``. Efectúa la inversión lógica de bits.
+
+Estas operaciones pueden usarse no solo como métodos sino también como *operadores*, tal y como ilustra el código siguiente:
+
+.. code-block:: kotlin
+
+    val a : Int = 43
+    val b : Int = 0b0000_0001
+    // Si a tiene activo el último bit
+    val resultado = a and b
+    if ( resultado == b) {
+        println ("El último bit de $a está activo")
+    }
+
+Tipo ``Char``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los ``Char`` **no pueden usarse como enteros**, aunque sí pueden usarse intervalos como muestra el programa siguiente:
+
+.. code-block:: kotlin
+
+    caracter : Char
+    ...
+    if (caracter in 'a'..'z')
+    
+Se pueden usar también los carácteres típicos como ``\n`` o ``\r``.
+
+``Boolean``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Funcionan como en Java, solo aceptan dos valores (``true`` y ``false``), que permiten hacer comprobaciones usando las operaciones típicas ``&&`` (``and`` lógico), ``||`` (``or`` lógico) y ``!`` (``not``).
+
+Vectores
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
 Problemas propuestos
 --------------------------------------------------------------------
 
