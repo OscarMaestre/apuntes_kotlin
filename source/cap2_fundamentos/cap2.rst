@@ -115,10 +115,18 @@ Estas operaciones pueden usarse no solo como métodos sino también como *operad
     val a : Int = 43
     val b : Int = 0b0000_0001
     // Si a tiene activo el último bit
-    val resultado = a and b
-    if ( resultado == b) {
+    // (usando método and)
+    val resultado1 = a.and(b)
+    if ( resultado1 == b) {
         println ("El último bit de $a está activo")
     }
+    // Si a tiene activo el último bit
+    // (usando notación infija)
+    val resultado2 = a and b
+    if ( resultado2 == b) {
+        println ("El último bit de $a está activo")
+    }
+    
 
 Tipo ``Char``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -141,7 +149,22 @@ Funcionan como en Java, solo aceptan dos valores (``true`` y ``false``), que per
 Vectores
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+En Kotlin los vectores se crean usando la clase ``Array`` y además **una vez creados, son inmutables**. Para acceder a los valores almacenados se usan los corchetes ``[`` y ``]``, que en realidad enmascaran llamadas a método ``get`` y ``set``. La longitud de un vector se obtiene con la propiedad ``size``.
 
+Para crear vectores se pueden usar varias posibilidades, entre ellas:
+
+* La función ``arrayOf``, la cual recibe un número variable de argumentos y devuelve un vector.
+
+* Funciones fábrica, que podemos crear utilizando funciones anónimas con un parámetro que indique el tamaño del vector y después código que cree los elementos del vector. Más adelante se estudiará el uso de las funciones por lo que si no se comprende muy bien este punto puede ignorarse por ahora y volver aquí después de leer el capítulo sobre funciones.
+
+A continuación se muestran dos maneras de crear vectores
+
+.. literalinclude: cap2_fundamentos/ejemplos/vectores.kt
+
+Y el resultado de este programa es:
+
+.. program-output:: java -jar cap2_fundamentos/ejemplos/ejemplo_vectores.jar 
+   :shell:
 
 
 Problemas propuestos
