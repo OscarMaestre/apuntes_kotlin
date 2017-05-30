@@ -129,7 +129,7 @@ Estas operaciones pueden usarse no solo como métodos sino también como *operad
     
 
 Tipo ``Char``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 Los ``Char`` **no pueden usarse como enteros**, aunque sí pueden usarse intervalos como muestra el programa siguiente:
 
@@ -142,12 +142,12 @@ Los ``Char`` **no pueden usarse como enteros**, aunque sí pueden usarse interva
 Se pueden usar también los carácteres típicos como ``\n`` o ``\r``.
 
 ``Boolean``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Funcionan como en Java, solo aceptan dos valores (``true`` y ``false``), que permiten hacer comprobaciones usando las operaciones típicas ``&&`` (``and`` lógico), ``||`` (``or`` lógico) y ``!`` (``not``).
 
 Vectores
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 En Kotlin los vectores se crean usando la clase ``Array`` y además **una vez creados, son inmutables**. Para acceder a los valores almacenados se usan los corchetes ``[`` y ``]``, que en realidad enmascaran llamadas a método ``get`` y ``set``. La longitud de un vector se obtiene con la propiedad ``size``.
 
@@ -165,6 +165,69 @@ Y el resultado de este programa es:
 
 .. program-output:: java -jar cap2_fundamentos/ejemplos/ejemplo_vectores.jar 
    :shell:
+
+Como puede apreciarse, Kotlin acepta el mecanismo estándar de Java para la creación de vectores genéricos, sin embargo, Kotlin tiene sus propios tipos especializados en vectores y sus propias funciones para construir dichos vectores. Estas clases **no heredan de Array** pero tienen todos sus métodos y además evitan problemas de rendimiento al hacer el *boxing*. En suma, son muy recomendables.
+
+.. code-block:: kotlin
+
+    val vectorBytes     : ByteArray   = byteArrayOf(42, -13)
+    val vectorShorts    : ShortArray  = shortArrayOf (91, 1310)
+    val vectorInts      : IntArray    = intArrayOf(32013, 9102)
+    val vectorLongs     : LongArray   = longArrayOf(920283,484831)
+    val vectorFloats    : FloatArray  = floatArrayOf(32.14f, -0.92f)
+    val vectorDoubles   : DoubleArray = doubleArrayOf (0.320893, -0.93)
+
+
+Cadenas
+-----------------------------------
+Las cadenas se definen mediante el tipo ``String`` y **son inmutables**. Se puede acceder a los ``Char`` almacenados en una cadena usando la misma notacion de vectores, es decir ``cadena[pos]``. También se pueden recorrer con un bucle for de esta manera:
+
+.. code-block:: kotlin
+
+    val cadena : String = "Hola Kotlin"
+    var caracter : Char = ' '
+    for (caracter in cadena) {
+        println (caracter)
+    }
+
+A la hora de almacenar cadenas se pueden usar dos sistemas
+
+* Cadenas Java normales ("escaped strings" en la documentación de Kotlin), en las cuales los fines de línea usan símbolos de escape como por ejemplo ``val cadena : String = "Hola mundo\n"``.
+* Cadenas literales (o "raw strings") que empiezan y acaban utilizando tres veces el símbolo " y que pueden usar varias líneas para construirse. A continuación se muestra un ejemplo
+
+.. code-block:: kotlin
+
+    val cadena : String = """
+    Con diez cañones por banda,
+    viento en popa a toda vela,
+    no surca el mar sino vuela
+    un velero bergantín
+    """
+    println ( cadena )
+    
+Además, una cadena puede contener los valores de otras variables, lo que resulta muy útil para, entre otras cosas, generar mensajes:
+
+.. code-block:: kotlin
+    
+    val i=20
+    val mensaje = "i vale $i"
+    println (mensaje)
+    
+Estas cadenas pueden ser arbitrariamente complejas. El símbolo $ se asocia al valor que tiene a su derecha. Si queremos que dicho valor sea algo compuesto deberemos usar las llaves, como se muestra a continuación:
+
+.. code-block:: kotlin
+    
+    val saludo  = "Hola Kotlin"
+    val mensaje = "'$saludo' tiene ${saludo.length} caracteres"
+    println ( mensaje )
+
+Si se desea imprimir el símbolo $ se tiene que usar esta secuencia:
+
+.. code-block:: kotlin
+    
+    
+    val mensaje = "Cuesta 10.42 ${'$'}"
+    println ( mensaje )
 
 
 Problemas propuestos
