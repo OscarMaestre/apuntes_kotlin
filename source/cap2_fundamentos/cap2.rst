@@ -205,6 +205,32 @@ A la hora de almacenar cadenas se pueden usar dos sistemas
     """
     println ( cadena )
     
+Si probamos el código anterior veremos que Kotlin también ha imprimido los espacios en blanco y
+los tabuladores. Aunque una posibilidad para resolver esto sería escribir el texto sin tabular, Kotlin permite usar un *símbolo de margen* que es por defecto la barra vertical ``|``. Utilizando el método ``trimMargin``` se puede "limpiar la cadena". A continuación se muestra como hacerlo:
+
+.. code-block:: kotlin
+    
+    var cadenaLarga : String = """
+        |Con cien cañones por banda,
+        |viento en popa a toda vela,
+        |no surca el mar sino vuela,
+        |un velero bergantín.
+    """
+    println ( cadenaLarga.trimMargin() )
+
+Si en lugar de usar la barra vertical queremos usar otro símbolo como separador podemos llamar al método trimMargin usando dicho símbolo.
+
+.. code-block:: kotlin
+
+    var cadenaLarga : String = """
+        >Con cien cañones por banda,
+        >viento en popa a toda vela,
+        >no surca el mar sino vuela,
+        >un velero bergantín.
+    """
+    println ( cadenaLarga.trimMargin(">") )
+
+    
 Además, una cadena puede contener los valores de otras variables, lo que resulta muy útil para, entre otras cosas, generar mensajes:
 
 .. code-block:: kotlin
