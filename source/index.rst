@@ -13,6 +13,8 @@ Contenidos:
    
    cap1_sintaxis_basica/cap1
    cap2_fundamentos/cap2
+   cap3_sentencias_lenguaje/cap3
+   
 
 Indices and tables
 ==================
