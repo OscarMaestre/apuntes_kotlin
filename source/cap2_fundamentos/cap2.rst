@@ -255,6 +255,81 @@ Si se desea imprimir el símbolo $ se tiene que usar esta secuencia:
     val mensaje = "Cuesta 10.42 ${'$'}"
     println ( mensaje )
 
+Nulidad en los tipos
+------------------------
+
+Uno de los objetivos primordiales de Kotlin es evitar los problemas por la manipulación de valores ``null``.
+
+Recordemos que Kotlin dispone de tipos con o sin interrogación para indicar si vamos a permitir o no que una cierta variable o atributo sea ``null``. Así, por ejemplo esto se puede hacer
+
+.. code-block:: kotlin
+
+    val a : String? = null
+    
+Pero esto no se puede hacer (de hecho ni siquiera compila).
+
+.. code-block:: kotlin
+
+    val a : String = null
+    
+Al usar un tipo ``String`` tenemos garantías de que un cierto valor no usará ``null`` y podremos trabajar tranquilamente.
+
+.. code-block:: kotlin
+
+    val saludo : String = "Hola mundo"
+    //Código omitido
+    //...
+    //..
+    
+    //Esta operación es completamente segura
+    //Ni siquiera se necesita comprobar
+    //con if (saludo!=null)...
+    val longitud = saludo.length
+
+Procesamiento seguro en variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Una característica muy interesante de Kotlin es poder usar ``?`` para comprobar si una variable contiene ``null`` o no.
+
+El operador ``?`` significa algo como: *si la variable no es null procesala, y si no devuelve null*.
+
+Observemos el código siguiente:
+
+.. code-block:: kotlin
+
+    val saludo : String? = null
+    val longitud = saludo?.length
+    println ( longitud )
+
+Este código crea una variable y almacena dentro un ``null``. Lo interesante ocurre en la segunda línea.
+
+En dicha línea Kotlin comprueba el contenido de ``saludo``. Si es null, no continúa y automáticamente devuelve un ``null`` que se almacena en ``longitud``. Si este código se hiciera en Java se habría obtenido una excepción y el programa se habría detenido. Usando correctamente estas "llamadas seguras" podemos reducir el número de errores en ejecución y reducir el tamaño de nuestro código haciéndolo a la vez más simple de entender.
+
+El operador Elvis
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+La comprobación de los ``null`` se hace a menudo y por ejemplo, si deseamos extraer la longitud en forma de ``Int`` (y no ``Int?``) podríamos hacer algo así
+
+.. code-block:: kotlin
+
+    val saludo : String? = null
+    //Si la cadena es null almacenar
+    //un -1 en longitud
+    val longitud : Int = if (saludo !=null ) saludo.length else -1
+    println ( longitud )
+    
+Como vemos el ``if`` se puede usar como una expresión y hacer que dicho ``if`` almacene una cosa u otra. Como esta operación es muy común, Kotlin ofrece el operador ``?:``
+
+Así, el mismo código de antes se puede escribir así:
+
+.. code-block:: kotlin
+
+    val saludo : String? = null
+    val longitud : saludo?.length ?: -1
+    println ( longitud )
+    
+Este código viene a decir algo así como: *"si saludo no es null tomar su length y almacenarlo en longitud. En caso contrario almacenar -1"*
+
 
 Problemas propuestos
 --------------------------------------------------------------------
