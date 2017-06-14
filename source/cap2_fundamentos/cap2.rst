@@ -291,7 +291,7 @@ Procesamiento seguro en variables
 
 Una característica muy interesante de Kotlin es poder usar ``?`` para comprobar si una variable contiene ``null`` o no.
 
-El operador ``?`` significa algo como: *si la variable no es null procesala, y si no devuelve null*.
+El operador ``?`` significa algo como: *si la variable no es null procésala, y si no devuelve null*.
 
 Observemos el código siguiente:
 
@@ -308,7 +308,7 @@ En dicha línea Kotlin comprueba el contenido de ``saludo``. Si es null, no cont
 El operador Elvis
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-La comprobación de los ``null`` se hace a menudo y por ejemplo, si deseamos extraer la longitud en forma de ``Int`` (y no ``Int?``) podríamos hacer algo así
+La comprobación de los ``null`` se hace a menudo. Si por ejemplo, si deseamos extraer la longitud en forma de ``Int`` (y no ``Int?``) podríamos hacer algo así
 
 .. code-block:: kotlin
 
@@ -329,6 +329,30 @@ Así, el mismo código de antes se puede escribir así:
     println ( longitud )
     
 Este código viene a decir algo así como: *"si saludo no es null tomar su length y almacenarlo en longitud. En caso contrario almacenar -1"*
+
+    
+Expresiones y sentencias
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En los próximos capítulos se hará mucho hincapie en las "expresiones" y las "sentencias". Aunque algunas personas usan ambas palabras indistintamente **no son lo mismo*.
+
+* Una expresión **devuelve un valor**.
+* Una sentencia **ejecuta una tarea**.
+
+Así, por ejemplo, ya hemos dicho que ``if`` puede actuar como expresión, por lo que podemos hacer esto:
+
+.. code-block:: kotlin
+
+    //if devuelve un valor que puede ser a o b
+    var x = if ( a > b ) a else b
+    
+Pero ``for`` no es una expresión por lo que no podemos hacer esto
+
+.. code-block:: kotlin
+    
+    //Ni siquiera compilará
+    var x = for ...
+    
 
 
 Problemas propuestos
