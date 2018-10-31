@@ -1,0 +1,452 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Fundamentos del lenguaje &#8212; documentación de Apuntes Kotlin - 1.0</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Sentencias del lenguaje" href="../cap3_sentencias_lenguaje/cap3.html" />
+    <link rel="prev" title="Sintaxis básica" href="../cap1_sintaxis_basica/cap1.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#fundamentos-del-lenguaje" id="id3">Fundamentos del lenguaje</a><ul>
+<li><a class="reference internal" href="#objetos" id="id4">Objetos</a></li>
+<li><a class="reference internal" href="#encapsulacion-boxing" id="id5">Encapsulación («boxing»)</a></li>
+<li><a class="reference internal" href="#tipos-numericos" id="id6">Tipos numéricos</a></li>
+<li><a class="reference internal" href="#tipo-char" id="id7">Tipo <code class="docutils literal notranslate"><span class="pre">Char</span></code></a></li>
+<li><a class="reference internal" href="#boolean" id="id8"><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></a></li>
+<li><a class="reference internal" href="#vectores" id="id9">Vectores</a></li>
+<li><a class="reference internal" href="#cadenas" id="id10">Cadenas</a></li>
+<li><a class="reference internal" href="#nulidad-en-los-tipos" id="id11">Nulidad en los tipos</a><ul>
+<li><a class="reference internal" href="#procesamiento-seguro-en-variables" id="id12">Procesamiento seguro en variables</a></li>
+<li><a class="reference internal" href="#el-operador-elvis" id="id13">El operador Elvis</a></li>
+<li><a class="reference internal" href="#expresiones-y-sentencias" id="id14">Expresiones y sentencias</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-propuestos" id="id15">Problemas propuestos</a><ul>
+<li><a class="reference internal" href="#tamanos-de-los-tipos" id="id16">Tamaños de los tipos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fundamentos-del-lenguaje">
+<h1><a class="toc-backref" href="#id3">Fundamentos del lenguaje</a><a class="headerlink" href="#fundamentos-del-lenguaje" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="objetos">
+<h2><a class="toc-backref" href="#id4">Objetos</a><a class="headerlink" href="#objetos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En Kotlin todo es un objeto y por lo tanto sobre cualquier variable se pueden consultar propiedades o ejecutar métodos. Por ejemplo, este código es válido en Kotlin</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Hola&quot;</span><span class="p">.</span><span class="n">length</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Si se conoce Ruby es muy posible que se haya reconocido la influencia de este lenguaje en Kotlin.</p>
+</div>
+<div class="section" id="encapsulacion-boxing">
+<h2><a class="toc-backref" href="#id5">Encapsulación («boxing»)</a><a class="headerlink" href="#encapsulacion-boxing" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Kotlin utiliza tanto sus propios tipos como los tipos de Java definidos en la máquina virtual JVM. Por ejemplo, las variables de tipo <code class="docutils literal notranslate"><span class="pre">Int</span></code> se almacenan a nivel interno como un tipo Java en la JVM pero las variables de tipo <code class="docutils literal notranslate"><span class="pre">Int?</span></code> (recordemos, sí aceptan valores <code class="docutils literal notranslate"><span class="pre">null</span></code>) en realidad se encapsulan en tipos de Kotlin.</p>
+<p>Esto significa que podemos comparar los valores de un tipo <code class="docutils literal notranslate"><span class="pre">Int</span></code> y de uno <code class="docutils literal notranslate"><span class="pre">Int?</span></code> sin tener ningún problema pero <em>no debemos comparar la identidad de dos variables de distinto tipo,  ya que podemos obtener un valor falso</em></p>
+<p>Si ejecutamos el siguiente programa:</p>
+<p>Obtendremos el siguiente resultado</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Error: Unable to access jarfile cap2_fundamentos/ejemplos/ejemplo_identidad_tipos.jar
+</pre></div>
+</div>
+<p>De hecho, ni siquiera es posible compilar la comparación de variables de tipos distintos</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">var</span> <span class="py">respuesta1</span> <span class="p">:</span> <span class="n">Int</span><span class="p">?</span>  <span class="p">=</span> <span class="m">42</span>
+<span class="k">var</span> <span class="py">respuesta2</span> <span class="p">:</span> <span class="n">Long</span><span class="p">?</span> <span class="p">=</span> <span class="m">42</span>
+<span class="c1">//El compilador se queja en esta línea</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">respuesta1</span> <span class="p">==</span> <span class="n">respuesta2</span> <span class="p">)</span> <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;Respuestas iguales&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tipos-numericos">
+<h2><a class="toc-backref" href="#id6">Tipos numéricos</a><a class="headerlink" href="#tipos-numericos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los números funcionan de forma similar a los números en Java pero con una diferencia importante.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Kotlin no hace conversiones implícitas entre tipos ni siquiera cuando intentemos almacenar valor un tipo pequeño (como <code class="docutils literal notranslate"><span class="pre">Byte</span></code>) dentro de un tipo más grande (como <code class="docutils literal notranslate"><span class="pre">Int</span></code>). Es difícil que se produzcan error porque el código erróneo ni siquiera compilará.</p>
+</div>
+<p>Así, este código falla</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">unByte</span> <span class="p">:</span> <span class="n">Byte</span> <span class="p">=</span> <span class="m">12</span>
+<span class="k">val</span> <span class="py">unInt</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">unByte</span>
+</pre></div>
+</div>
+<p>Y este código también falla</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">a</span> <span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="m">3</span>
+<span class="k">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Long</span><span class="p">?</span> <span class="p">=</span> <span class="m">10L</span>
+<span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Visto esto, los tipos básicos en Kotlin son los siguientes:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Double</span></code>, para números con decimales de doble precisión.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Float</span></code>, para números con decimales de precisión simple.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Long</span></code>, para números enteros largos.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Int</span></code>, para números enteros.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Short</span></code>, para números enteros cortos.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Byte</span></code>, para números enteros muy cortos.</li>
+</ul>
+<p>Cuando se almacenan valores en una variable o constante se usan los mismos sufijos que en Java. También se incluye la posibilidad de usar el guión bajo («_») como separador
+en números sin que eso afecte al número:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">unLong</span>              <span class="p">:</span> <span class="n">Long</span>  <span class="p">=</span> <span class="m">42L</span>
+<span class="k">val</span> <span class="py">unLongEnHexadecimal</span> <span class="p">:</span> <span class="n">Long</span>  <span class="p">=</span> <span class="m">0</span><span class="n">xCAFB</span>
+<span class="k">val</span> <span class="py">unIntEnBinario</span>      <span class="p">:</span> <span class="n">Long</span>  <span class="p">=</span> <span class="m">0</span><span class="n">b010010100101</span>
+<span class="k">val</span> <span class="py">diezMillones</span>        <span class="p">:</span> <span class="n">Long</span>  <span class="p">=</span> <span class="m">10</span><span class="n">_000_000</span>
+<span class="k">val</span> <span class="py">unDouble</span>            <span class="p">:</span> <span class="n">Double</span><span class="p">=</span> <span class="m">6.02</span><span class="n">e23</span>
+<span class="k">val</span> <span class="py">unFloat</span>             <span class="p">:</span> <span class="n">Float</span> <span class="p">=</span> <span class="m">42.42f</span>
+</pre></div>
+</div>
+<p>Además, todos los tipos numéricos ofrecen métodos para poder convertir entre distintos tipos:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">toDouble()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">toFloat()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">toLong()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">toInt()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">toShort()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">toByte()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">toChar()</span></code></li>
+</ul>
+<p>Además, todos tipos numéricos <code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">``</span> <span class="pre">y</span> <span class="pre">``Long</span></code> soportan operaciones a nivel de bit. Incluso algunas funciones pueden usarse como operadores en lugar de tipo. Las operaciones a nivel de bit son:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">shl(cantidadDeBits)</span></code>. De Signed Shift Left o <em>desplazamiento de bits a la izquierda conservando el bit de signo</em>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">shr(cantidadDeBits)</span></code>. De Signed Shift Right o <em>desplazamiento de bits a la derecha conservando el bit de signo</em>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ushr(cantidadDeBits)</span></code>. De Unsigned Shift Right o <em>desplazamiento de bits a la derecha (incluyendo y desplazando el bit de signo)</em>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">and(numero)</span></code>. Efectúa el <code class="docutils literal notranslate"><span class="pre">and</span></code> de los bits.</li>
+<li><code class="docutils literal notranslate"><span class="pre">or(numero)</span></code>. Efectúa el <code class="docutils literal notranslate"><span class="pre">or</span></code> de los bits.</li>
+<li><code class="docutils literal notranslate"><span class="pre">xor(numero)</span></code>. Efectúa el <code class="docutils literal notranslate"><span class="pre">xor</span></code> de los bits.</li>
+<li><code class="docutils literal notranslate"><span class="pre">inv(numero)</span></code>. Efectúa la inversión lógica de bits.</li>
+</ul>
+<p>Estas operaciones pueden usarse no solo como métodos sino también como <em>operadores</em>, tal y como ilustra el código siguiente:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">a</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">43</span>
+<span class="k">val</span> <span class="py">b</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span><span class="n">b0000_0001</span>
+<span class="c1">// Si a tiene activo el último bit</span>
+<span class="c1">// (usando método and)</span>
+<span class="k">val</span> <span class="py">resultado1</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">and</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">resultado1</span> <span class="p">==</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;El último bit de $a está activo&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Si a tiene activo el último bit</span>
+<span class="c1">// (usando notación infija)</span>
+<span class="k">val</span> <span class="py">resultado2</span> <span class="p">=</span> <span class="n">a</span> <span class="n">and</span> <span class="n">b</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">resultado2</span> <span class="p">==</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span><span class="s">&quot;El último bit de $a está activo&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tipo-char">
+<h2><a class="toc-backref" href="#id7">Tipo <code class="docutils literal notranslate"><span class="pre">Char</span></code></a><a class="headerlink" href="#tipo-char" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los <code class="docutils literal notranslate"><span class="pre">Char</span></code> <strong>no pueden usarse como enteros</strong>, aunque sí pueden usarse intervalos como muestra el programa siguiente:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">caracter</span> <span class="p">:</span> <span class="n">Char</span>
+<span class="p">...</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">caracter</span> <span class="k">in</span> <span class="sc">&#39;a&#39;</span><span class="p">..</span><span class="sc">&#39;z&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Se pueden usar también los carácteres típicos como <code class="docutils literal notranslate"><span class="pre">\n</span></code> o <code class="docutils literal notranslate"><span class="pre">\r</span></code>.</p>
+</div>
+<div class="section" id="boolean">
+<h2><a class="toc-backref" href="#id8"><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></a><a class="headerlink" href="#boolean" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Funcionan como en Java, solo aceptan dos valores (<code class="docutils literal notranslate"><span class="pre">true</span></code> y <code class="docutils literal notranslate"><span class="pre">false</span></code>), que permiten hacer comprobaciones usando las operaciones típicas <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> (<code class="docutils literal notranslate"><span class="pre">and</span></code> lógico), <code class="docutils literal notranslate"><span class="pre">||</span></code> (<code class="docutils literal notranslate"><span class="pre">or</span></code> lógico) y <code class="docutils literal notranslate"><span class="pre">!</span></code> (<code class="docutils literal notranslate"><span class="pre">not</span></code>).</p>
+</div>
+<div class="section" id="vectores">
+<h2><a class="toc-backref" href="#id9">Vectores</a><a class="headerlink" href="#vectores" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En Kotlin los vectores se crean usando la clase <code class="docutils literal notranslate"><span class="pre">Array</span></code> y además <strong>una vez creados, son inmutables</strong>. Para acceder a los valores almacenados se usan los corchetes <code class="docutils literal notranslate"><span class="pre">[</span></code> y <code class="docutils literal notranslate"><span class="pre">]</span></code>, que en realidad enmascaran llamadas a método <code class="docutils literal notranslate"><span class="pre">get</span></code> y <code class="docutils literal notranslate"><span class="pre">set</span></code>. La longitud de un vector se obtiene con la propiedad <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p>
+<p>Para crear vectores se pueden usar varias posibilidades, entre ellas:</p>
+<ul class="simple">
+<li>La función <code class="docutils literal notranslate"><span class="pre">arrayOf</span></code>, la cual recibe un número variable de argumentos y devuelve un vector.</li>
+<li>Funciones fábrica, que podemos crear utilizando funciones anónimas con un parámetro que indique el tamaño del vector y después código que cree los elementos del vector. Más adelante se estudiará el uso de las funciones por lo que si no se comprende muy bien este punto puede ignorarse por ahora y volver aquí después de leer el capítulo sobre funciones.</li>
+</ul>
+<p>A continuación se muestran dos maneras de crear vectores</p>
+<p>Y el resultado de este programa es:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Error: Unable to access jarfile cap2_fundamentos/ejemplos/ejemplo_vectores.jar
+</pre></div>
+</div>
+<p>Como puede apreciarse, Kotlin acepta el mecanismo estándar de Java para la creación de vectores genéricos, sin embargo, Kotlin tiene sus propios tipos especializados en vectores y sus propias funciones para construir dichos vectores. Estas clases <strong>no heredan de Array</strong> pero tienen todos sus métodos y además evitan problemas de rendimiento al hacer el <em>boxing</em>. En suma, son muy recomendables.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">vectorBytes</span>     <span class="p">:</span> <span class="n">ByteArray</span>   <span class="p">=</span> <span class="n">byteArrayOf</span><span class="p">(</span><span class="m">42</span><span class="p">,</span> <span class="p">-</span><span class="m">13</span><span class="p">)</span>
+<span class="k">val</span> <span class="py">vectorShorts</span>    <span class="p">:</span> <span class="n">ShortArray</span>  <span class="p">=</span> <span class="n">shortArrayOf</span> <span class="p">(</span><span class="m">91</span><span class="p">,</span> <span class="m">1310</span><span class="p">)</span>
+<span class="k">val</span> <span class="py">vectorInts</span>      <span class="p">:</span> <span class="n">IntArray</span>    <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">32013</span><span class="p">,</span> <span class="m">9102</span><span class="p">)</span>
+<span class="k">val</span> <span class="py">vectorLongs</span>     <span class="p">:</span> <span class="n">LongArray</span>   <span class="p">=</span> <span class="n">longArrayOf</span><span class="p">(</span><span class="m">920283</span><span class="p">,</span><span class="m">484831</span><span class="p">)</span>
+<span class="k">val</span> <span class="py">vectorFloats</span>    <span class="p">:</span> <span class="n">FloatArray</span>  <span class="p">=</span> <span class="n">floatArrayOf</span><span class="p">(</span><span class="m">32.14f</span><span class="p">,</span> <span class="p">-</span><span class="m">0.92f</span><span class="p">)</span>
+<span class="k">val</span> <span class="py">vectorDoubles</span>   <span class="p">:</span> <span class="n">DoubleArray</span> <span class="p">=</span> <span class="n">doubleArrayOf</span> <span class="p">(</span><span class="m">0.320893</span><span class="p">,</span> <span class="p">-</span><span class="m">0.93</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cadenas">
+<h2><a class="toc-backref" href="#id10">Cadenas</a><a class="headerlink" href="#cadenas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las cadenas se definen mediante el tipo <code class="docutils literal notranslate"><span class="pre">String</span></code> y <strong>son inmutables</strong>. Se puede acceder a los <code class="docutils literal notranslate"><span class="pre">Char</span></code> almacenados en una cadena usando la misma notacion de vectores, es decir <code class="docutils literal notranslate"><span class="pre">cadena[pos]</span></code>. También se pueden recorrer con un bucle for de esta manera:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">cadena</span> <span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;Hola Kotlin&quot;</span>
+<span class="k">var</span> <span class="py">caracter</span> <span class="p">:</span> <span class="n">Char</span> <span class="p">=</span> <span class="sc">&#39; &#39;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">caracter</span> <span class="k">in</span> <span class="n">cadena</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span><span class="n">caracter</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A la hora de almacenar cadenas se pueden usar dos sistemas</p>
+<ul class="simple">
+<li>Cadenas Java normales («escaped strings» en la documentación de Kotlin), en las cuales los fines de línea usan símbolos de escape como por ejemplo <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">cadena</span> <span class="pre">:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;Hola</span> <span class="pre">mundo\n&quot;</span></code>.</li>
+<li>Cadenas literales (o «raw strings») que empiezan y acaban utilizando tres veces el símbolo » y que pueden usar varias líneas para construirse. A continuación se muestra un ejemplo</li>
+</ul>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">cadena</span> <span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="n">Con</span> <span class="n">diez</span> <span class="n">cañones</span> <span class="n">por</span> <span class="n">banda</span><span class="p">,</span>
+<span class="n">viento</span> <span class="n">en</span> <span class="n">popa</span> <span class="n">a</span> <span class="n">toda</span> <span class="n">vela</span><span class="p">,</span>
+<span class="n">no</span> <span class="n">surca</span> <span class="n">el</span> <span class="n">mar</span> <span class="n">sino</span> <span class="n">vuela</span>
+<span class="n">un</span> <span class="n">velero</span> <span class="n">bergantín</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">cadena</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Si probamos el código anterior veremos que Kotlin también ha imprimido los espacios en blanco y
+los tabuladores. Aunque una posibilidad para resolver esto sería escribir el texto sin tabular, Kotlin permite usar un <em>símbolo de margen</em> que es por defecto la barra vertical <code class="docutils literal notranslate"><span class="pre">|</span></code>. Utilizando el método <code class="docutils literal notranslate"><span class="pre">trimMargin`</span></code> se puede «limpiar la cadena». A continuación se muestra como hacerlo:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">var</span> <span class="py">cadenaLarga</span> <span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;&quot;&quot;</span>
+    <span class="p">|</span><span class="n">Con</span> <span class="n">cien</span> <span class="n">cañones</span> <span class="n">por</span> <span class="n">banda</span><span class="p">,</span>
+    <span class="p">|</span><span class="n">viento</span> <span class="n">en</span> <span class="n">popa</span> <span class="n">a</span> <span class="n">toda</span> <span class="n">vela</span><span class="p">,</span>
+    <span class="p">|</span><span class="n">no</span> <span class="n">surca</span> <span class="n">el</span> <span class="n">mar</span> <span class="n">sino</span> <span class="n">vuela</span><span class="p">,</span>
+    <span class="p">|</span><span class="n">un</span> <span class="n">velero</span> <span class="n">bergantín</span><span class="p">.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">cadenaLarga</span><span class="p">.</span><span class="n">trimMargin</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Si en lugar de usar la barra vertical queremos usar otro símbolo como separador podemos llamar al método trimMargin usando dicho símbolo.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">var</span> <span class="py">cadenaLarga</span> <span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;&quot;&quot;</span>
+    <span class="p">&gt;</span><span class="n">Con</span> <span class="n">cien</span> <span class="n">cañones</span> <span class="n">por</span> <span class="n">banda</span><span class="p">,</span>
+    <span class="p">&gt;</span><span class="n">viento</span> <span class="n">en</span> <span class="n">popa</span> <span class="n">a</span> <span class="n">toda</span> <span class="n">vela</span><span class="p">,</span>
+    <span class="p">&gt;</span><span class="n">no</span> <span class="n">surca</span> <span class="n">el</span> <span class="n">mar</span> <span class="n">sino</span> <span class="n">vuela</span><span class="p">,</span>
+    <span class="p">&gt;</span><span class="n">un</span> <span class="n">velero</span> <span class="n">bergantín</span><span class="p">.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">cadenaLarga</span><span class="p">.</span><span class="n">trimMargin</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Además, una cadena puede contener los valores de otras variables, lo que resulta muy útil para, entre otras cosas, generar mensajes:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">i</span><span class="p">=</span><span class="m">20</span>
+<span class="k">val</span> <span class="py">mensaje</span> <span class="p">=</span> <span class="s">&quot;i vale $i&quot;</span>
+<span class="n">println</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Estas cadenas pueden ser arbitrariamente complejas. El símbolo $ se asocia al valor que tiene a su derecha. Si queremos que dicho valor sea algo compuesto deberemos usar las llaves, como se muestra a continuación:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">saludo</span>  <span class="p">=</span> <span class="s">&quot;Hola Kotlin&quot;</span>
+<span class="k">val</span> <span class="py">mensaje</span> <span class="p">=</span> <span class="s">&quot;&#39;$saludo&#39; tiene ${saludo.length} caracteres&quot;</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">mensaje</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Si se desea imprimir el símbolo $ se tiene que usar esta secuencia:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">mensaje</span> <span class="p">=</span> <span class="s">&quot;Cuesta 10.42 ${&#39;$&#39;}&quot;</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">mensaje</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nulidad-en-los-tipos">
+<h2><a class="toc-backref" href="#id11">Nulidad en los tipos</a><a class="headerlink" href="#nulidad-en-los-tipos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Uno de los objetivos primordiales de Kotlin es evitar los problemas por la manipulación de valores <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p>Recordemos que Kotlin dispone de tipos con o sin interrogación para indicar si vamos a permitir o no que una cierta variable o atributo sea <code class="docutils literal notranslate"><span class="pre">null</span></code>. Así, por ejemplo esto se puede hacer</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">a</span> <span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+</pre></div>
+</div>
+<p>Pero esto no se puede hacer (de hecho ni siquiera compila).</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">a</span> <span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="k">null</span>
+</pre></div>
+</div>
+<p>Al usar un tipo <code class="docutils literal notranslate"><span class="pre">String</span></code> tenemos garantías de que un cierto valor no usará <code class="docutils literal notranslate"><span class="pre">null</span></code> y podremos trabajar tranquilamente.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">saludo</span> <span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">&quot;Hola mundo&quot;</span>
+<span class="c1">//Código omitido</span>
+<span class="c1">//...</span>
+<span class="c1">//..</span>
+
+<span class="c1">//Esta operación es completamente segura</span>
+<span class="c1">//Ni siquiera se necesita comprobar</span>
+<span class="c1">//con if (saludo!=null)...</span>
+<span class="k">val</span> <span class="py">longitud</span> <span class="p">=</span> <span class="n">saludo</span><span class="p">.</span><span class="n">length</span>
+</pre></div>
+</div>
+<div class="section" id="procesamiento-seguro-en-variables">
+<h3><a class="toc-backref" href="#id12">Procesamiento seguro en variables</a><a class="headerlink" href="#procesamiento-seguro-en-variables" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una característica muy interesante de Kotlin es poder usar <code class="docutils literal notranslate"><span class="pre">?</span></code> para comprobar si una variable contiene <code class="docutils literal notranslate"><span class="pre">null</span></code> o no.</p>
+<p>El operador <code class="docutils literal notranslate"><span class="pre">?</span></code> significa algo como: <em>si la variable no es null procésala, y si no devuelve null</em>.</p>
+<p>Observemos el código siguiente:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">saludo</span> <span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+<span class="k">val</span> <span class="py">longitud</span> <span class="p">=</span> <span class="n">saludo</span><span class="o">?.</span><span class="n">length</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">longitud</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Este código crea una variable y almacena dentro un <code class="docutils literal notranslate"><span class="pre">null</span></code>. Lo interesante ocurre en la segunda línea.</p>
+<p>En dicha línea Kotlin comprueba el contenido de <code class="docutils literal notranslate"><span class="pre">saludo</span></code>. Si es null, no continúa y automáticamente devuelve un <code class="docutils literal notranslate"><span class="pre">null</span></code> que se almacena en <code class="docutils literal notranslate"><span class="pre">longitud</span></code>. Si este código se hiciera en Java se habría obtenido una excepción y el programa se habría detenido. Usando correctamente estas «llamadas seguras» podemos reducir el número de errores en ejecución y reducir el tamaño de nuestro código haciéndolo a la vez más simple de entender.</p>
+</div>
+<div class="section" id="el-operador-elvis">
+<h3><a class="toc-backref" href="#id13">El operador Elvis</a><a class="headerlink" href="#el-operador-elvis" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La comprobación de los <code class="docutils literal notranslate"><span class="pre">null</span></code> se hace a menudo. Si por ejemplo, si deseamos extraer la longitud en forma de <code class="docutils literal notranslate"><span class="pre">Int</span></code> (y no <code class="docutils literal notranslate"><span class="pre">Int?</span></code>) podríamos hacer algo así</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">saludo</span> <span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+<span class="c1">//Si la cadena es null almacenar</span>
+<span class="c1">//un -1 en longitud</span>
+<span class="k">val</span> <span class="py">longitud</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">saludo</span> <span class="p">!=</span><span class="k">null</span> <span class="p">)</span> <span class="n">saludo</span><span class="p">.</span><span class="n">length</span> <span class="k">else</span> <span class="p">-</span><span class="m">1</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">longitud</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Como vemos el <code class="docutils literal notranslate"><span class="pre">if</span></code> se puede usar como una expresión y hacer que dicho <code class="docutils literal notranslate"><span class="pre">if</span></code> almacene una cosa u otra. Como esta operación es muy común, Kotlin ofrece el operador <code class="docutils literal notranslate"><span class="pre">?:</span></code></p>
+<p>Así, el mismo código de antes se puede escribir así:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">saludo</span> <span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+<span class="k">val</span> <span class="py">longitud</span> <span class="p">:</span> <span class="n">saludo</span><span class="o">?.</span><span class="n">length</span> <span class="o">?:</span> <span class="p">-</span><span class="m">1</span>
+<span class="n">println</span> <span class="p">(</span> <span class="n">longitud</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Este código viene a decir algo así como: <em>«si saludo no es null tomar su length y almacenarlo en longitud. En caso contrario almacenar -1»</em></p>
+</div>
+<div class="section" id="expresiones-y-sentencias">
+<h3><a class="toc-backref" href="#id14">Expresiones y sentencias</a><a class="headerlink" href="#expresiones-y-sentencias" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En los próximos capítulos se hará mucho hincapie en las «expresiones» y las «sentencias». Aunque algunas personas usan ambas palabras indistintamente <a href="#id1"><span class="problematic" id="id2">**</span></a>no son lo mismo*.</p>
+<ul class="simple">
+<li>Una expresión <strong>devuelve un valor</strong>.</li>
+<li>Una sentencia <strong>ejecuta una tarea</strong>.</li>
+</ul>
+<p>Así, por ejemplo, ya hemos dicho que <code class="docutils literal notranslate"><span class="pre">if</span></code> puede actuar como expresión, por lo que podemos hacer esto:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">//if devuelve un valor que puede ser a o b</span>
+<span class="k">var</span> <span class="py">x</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span> <span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span> <span class="p">)</span> <span class="n">a</span> <span class="k">else</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Pero <code class="docutils literal notranslate"><span class="pre">for</span></code> no es una expresión por lo que no podemos hacer esto</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">//Ni siquiera compilará</span>
+<span class="k">var</span> <span class="py">x</span> <span class="p">=</span> <span class="k">for</span> <span class="p">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="problemas-propuestos">
+<h2><a class="toc-backref" href="#id15">Problemas propuestos</a><a class="headerlink" href="#problemas-propuestos" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="tamanos-de-los-tipos">
+<h3><a class="toc-backref" href="#id16">Tamaños de los tipos</a><a class="headerlink" href="#tamanos-de-los-tipos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><em>Crear un programa que imprima los números más grandes y más pequeños que pueden almacenar los tipos básicos en Kotlin</em></p>
+<p>Por fortuna, Kotlin (al igual que Java) incluye constantes dentro de las clases que permiten consultar estos valores muy fácilmente.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span> <span class="p">(</span> <span class="n">args</span> <span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor Double posible es ${Double.MAX_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El menor Double posible es ${Double.MIN_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor Float posible es ${Float.MAX_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El menor Float posible es ${Float.MIN_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor Long posible es ${Long.MAX_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El menor Long posible es ${Long.MIN_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor Int posible es ${Int.MAX_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El menor Int posible es ${Int.MIN_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor Short posible es ${Short.MAX_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El menor Short posible es ${Short.MIN_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor Byte posible es ${Byte.MAX_VALUE} &quot;</span><span class="p">)</span>
+    <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El menor Byte posible es ${Byte.MIN_VALUE} &quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Obtendremos el siguiente resultado</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Error: Unable to access jarfile cap2_fundamentos/programas/programa_1_tam_tipos_basicos.jar
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Apuntes Kotlin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cap1_sintaxis_basica/cap1.html">Sintaxis básica</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fundamentos del lenguaje</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#objetos">Objetos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encapsulacion-boxing">Encapsulación («boxing»)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tipos-numericos">Tipos numéricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tipo-char">Tipo <code class="docutils literal notranslate"><span class="pre">Char</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boolean"><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vectores">Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cadenas">Cadenas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nulidad-en-los-tipos">Nulidad en los tipos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problemas-propuestos">Problemas propuestos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cap3_sentencias_lenguaje/cap3.html">Sentencias del lenguaje</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../cap1_sintaxis_basica/cap1.html" title="capítulo anterior">Sintaxis básica</a></li>
+      <li>Next: <a href="../cap3_sentencias_lenguaje/cap3.html" title="próximo capítulo">Sentencias del lenguaje</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Oscar.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/cap2_fundamentos/cap2.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

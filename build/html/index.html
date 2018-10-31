@@ -1,0 +1,161 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Apuntes de Kotlin &#8212; documentación de Apuntes Kotlin - 1.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Sintaxis básica" href="cap1_sintaxis_basica/cap1.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="apuntes-de-kotlin">
+<h1>Apuntes de Kotlin<a class="headerlink" href="#apuntes-de-kotlin" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Contenidos:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html">Sintaxis básica</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#paquetes">Paquetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#funciones">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#comentarios">Comentarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#cadenas">Cadenas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#decisiones-con-if">Decisiones con <code class="docutils literal notranslate"><span class="pre">if</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#valores-null">Valores <code class="docutils literal notranslate"><span class="pre">null</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#el-operador-is-y-las-conversiones-de-tipo-casts">El operador <code class="docutils literal notranslate"><span class="pre">is</span></code> y las conversiones de tipo (casts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#bucles">Bucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#condiciones-multiples-when-en-lugar-de-switch">Condiciones múltiples: <code class="docutils literal notranslate"><span class="pre">when</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">switch</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#rangos">Rangos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#operaciones-de-e-s-basica">Operaciones de E/S básica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html#problemas-propuestos">Problemas propuestos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cap2_fundamentos/cap2.html">Fundamentos del lenguaje</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#objetos">Objetos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#encapsulacion-boxing">Encapsulación («boxing»)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#tipos-numericos">Tipos numéricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#tipo-char">Tipo <code class="docutils literal notranslate"><span class="pre">Char</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#boolean"><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#vectores">Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#cadenas">Cadenas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#nulidad-en-los-tipos">Nulidad en los tipos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap2_fundamentos/cap2.html#problemas-propuestos">Problemas propuestos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html">Sentencias del lenguaje</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html#decisiones-con-if">Decisiones con <code class="docutils literal notranslate"><span class="pre">if</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html#decisiones-multiples-con-when">Decisiones multiples con <code class="docutils literal notranslate"><span class="pre">when</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html#bucles-con-for">Bucles con <code class="docutils literal notranslate"><span class="pre">for</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html#bucles-while">Bucles <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html#ruptura-de-flujo-break-y-continue">Ruptura de flujo: <code class="docutils literal notranslate"><span class="pre">break</span></code> y <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Enlazar permanentemente con este título">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Índice de Módulos</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Apuntes Kotlin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cap1_sintaxis_basica/cap1.html">Sintaxis básica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cap2_fundamentos/cap2.html">Fundamentos del lenguaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cap3_sentencias_lenguaje/cap3.html">Sentencias del lenguaje</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="cap1_sintaxis_basica/cap1.html" title="próximo capítulo">Sintaxis básica</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Oscar.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

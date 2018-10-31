@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sentencias del lenguaje &#8212; documentación de Apuntes Kotlin - 1.0</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="Fundamentos del lenguaje" href="../cap2_fundamentos/cap2.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sentencias-del-lenguaje" id="id1">Sentencias del lenguaje</a><ul>
+<li><a class="reference internal" href="#decisiones-con-if" id="id2">Decisiones con <code class="docutils literal notranslate"><span class="pre">if</span></code></a></li>
+<li><a class="reference internal" href="#decisiones-multiples-con-when" id="id3">Decisiones multiples con <code class="docutils literal notranslate"><span class="pre">when</span></code></a></li>
+<li><a class="reference internal" href="#bucles-con-for" id="id4">Bucles con <code class="docutils literal notranslate"><span class="pre">for</span></code></a></li>
+<li><a class="reference internal" href="#bucles-while" id="id5">Bucles <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li><a class="reference internal" href="#ruptura-de-flujo-break-y-continue" id="id6">Ruptura de flujo: <code class="docutils literal notranslate"><span class="pre">break</span></code> y <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sentencias-del-lenguaje">
+<h1><a class="toc-backref" href="#id1">Sentencias del lenguaje</a><a class="headerlink" href="#sentencias-del-lenguaje" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Muchas de las sentencias de Kotlin funcionan de manera muy parecida a Java, por lo que si se ha manejado este lenguaje previamente será muy sencillo acostumbrarse a ellas. A continuación se muestran las operaciones básicas del lenguaje</p>
+<div class="section" id="decisiones-con-if">
+<h2><a class="toc-backref" href="#id2">Decisiones con <code class="docutils literal notranslate"><span class="pre">if</span></code></a><a class="headerlink" href="#decisiones-con-if" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los if funcionan como en Java:</p>
+<ul class="simple">
+<li>Se puede hacer un if-then y un if-then-else.</li>
+<li>La comprobación siempre va entre paréntesis.</li>
+<li>La comprobación puede ser muy compleja y se debe poner cada comprobación con su propio paréntesis.</li>
+</ul>
+<p>Sin embargo, en Kotlin el <code class="docutils literal notranslate"><span class="pre">if</span></code> es <strong>una expresión</strong>. Eso significa que el <code class="docutils literal notranslate"><span class="pre">if</span></code> se evalúa y <em>de dicha evaluación se obtiene un resultado</em>. Por lo tanto se puede meter dentro de una variable el resultado de un <code class="docutils literal notranslate"><span class="pre">if</span></code>, como muestra el siguiente código.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">n1</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">2</span>
+<span class="k">val</span> <span class="py">n2</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">3</span>
+<span class="c1">//Aquí se almacena el número mayor</span>
+<span class="k">val</span> <span class="py">mayor</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span> <span class="n">n1</span><span class="p">&gt;</span> <span class="n">n2</span> <span class="p">)</span> <span class="n">n1</span> <span class="k">else</span> <span class="n">n2</span>
+<span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor es $mayor&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Se puede seguir usando el <code class="docutils literal notranslate"><span class="pre">if</span></code> al estilo Java:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">n1</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">2</span>
+<span class="k">val</span> <span class="py">n2</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">3</span>
+<span class="c1">//Aquí se almacena el número mayor</span>
+<span class="k">var</span> <span class="py">mayor</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">n1</span> <span class="p">&gt;</span> <span class="n">n2</span> <span class="p">)</span> <span class="n">mayor</span> <span class="p">=</span> <span class="n">n1</span> <span class="k">else</span> <span class="n">mayor</span> <span class="p">=</span> <span class="n">n2</span>
+<span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor es $mayor&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Y por supuesto se pueden usar llaves para realizar tareas complejas:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">n1</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">2</span>
+<span class="k">val</span> <span class="py">n2</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">3</span>
+<span class="c1">//Aquí se almacena el número mayor</span>
+<span class="k">var</span> <span class="py">mayor</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">n1</span> <span class="p">&gt;</span> <span class="n">n2</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">mayor</span> <span class="p">=</span> <span class="n">n1</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="n">mayor</span> <span class="p">=</span> <span class="n">n2</span>
+<span class="p">}</span>
+<span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El mayor es $mayor&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Además, dentro del <code class="docutils literal notranslate"><span class="pre">then</span></code> o del <code class="docutils literal notranslate"><span class="pre">else</span></code> puede haber un bloque grande de código siempre y cuando la última línea del bloque sea un valor.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">mayor</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span> <span class="n">a</span> <span class="p">&gt;</span> <span class="n">b</span> <span class="p">)</span> <span class="p">{</span>
+                        <span class="n">println</span> <span class="p">(</span><span class="s">&quot;a es el mayor&quot;</span><span class="p">)</span>
+                        <span class="n">a</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span> <span class="p">{</span>
+                        <span class="n">println</span> <span class="p">(</span><span class="s">&quot;a es el mayor&quot;</span><span class="p">)</span>
+                        <span class="n">b</span>
+                    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="decisiones-multiples-con-when">
+<h2><a class="toc-backref" href="#id3">Decisiones multiples con <code class="docutils literal notranslate"><span class="pre">when</span></code></a><a class="headerlink" href="#decisiones-multiples-con-when" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En Kotlin no existe el <code class="docutils literal notranslate"><span class="pre">switch/case</span></code> de Java. El equivalente es la sentencia/expresión <code class="docutils literal notranslate"><span class="pre">when</span></code>. En líneas generales, <code class="docutils literal notranslate"><span class="pre">when</span></code> actúa como el <code class="docutils literal notranslate"><span class="pre">switch</span></code> de Java pero con una mayor potencia.</p>
+<p>De entrada, se pueden hacer comprobaciones simples.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="py">valor</span> <span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">2</span>
+<span class="k">when</span> <span class="p">(</span> <span class="n">valor</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="m">1</span>    <span class="p">-&gt;</span> <span class="p">{</span> <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El valor era 1&quot;</span> <span class="p">)</span>    <span class="p">}</span>
+    <span class="m">2</span>    <span class="p">-&gt;</span> <span class="p">{</span> <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;El valor era 2&quot;</span> <span class="p">)</span>    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{</span> <span class="n">println</span> <span class="p">(</span> <span class="s">&quot;Valor desconocido&quot;</span> <span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span> <span class="c1">//Fin del when</span>
+</pre></div>
+</div>
+<p>Sin embargo, podemos usar expresiones más complejas. Por ejemplo, se puede comprobar si <code class="docutils literal notranslate"><span class="pre">valor</span></code> es un elemento u otro (comprobación <code class="docutils literal notranslate"><span class="pre">or</span></code>) usando la coma («,»).</p>
+<p>También se puede comprobar si un valor está en un conjunto o no usando <code class="docutils literal notranslate"><span class="pre">in</span></code> o <code class="docutils literal notranslate"><span class="pre">!in</span></code>, comprobar si es una instancia de una clase con <code class="docutils literal notranslate"><span class="pre">is</span></code> o en general usar cualquier comprobación que dé como resultado un <code class="docutils literal notranslate"><span class="pre">boolean</span></code>. De hecho, ni siquiera es obligatorio que al lado del <code class="docutils literal notranslate"><span class="pre">when</span></code> aparezca un valor.</p>
+<p>Obsérvese que antes hemos dicho «sentencia/expresión» y es que puede usarse de ambas maneras. En</p>
+</div>
+<div class="section" id="bucles-con-for">
+<h2><a class="toc-backref" href="#id4">Bucles con <code class="docutils literal notranslate"><span class="pre">for</span></code></a><a class="headerlink" href="#bucles-con-for" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Aunque ya hemos visto algunos bucles hasta ahora usaremos este apartado para formalizar el uso de bucles <code class="docutils literal notranslate"><span class="pre">for</span></code>. La sentencia <code class="docutils literal notranslate"><span class="pre">for</span></code> puede iterar a través de cualquier objeto que proporcione un <code class="docutils literal notranslate"><span class="pre">iterator</span></code>, como por ejemplo:</p>
+<ul class="simple">
+<li>Un método llamado <code class="docutils literal notranslate"><span class="pre">iterator()</span></code> que devuelva objetos de un tipo que tenga un método <code class="docutils literal notranslate"><span class="pre">next()</span></code> y además tenga un método <code class="docutils literal notranslate"><span class="pre">hasNext()</span></code> que devuelva un <code class="docutils literal notranslate"><span class="pre">boolean</span></code>.</li>
+<li>Los tres métodos <code class="docutils literal notranslate"><span class="pre">iterator</span></code>, <code class="docutils literal notranslate"><span class="pre">next</span></code> y <code class="docutils literal notranslate"><span class="pre">hasNext</span></code> deben haber sido marcados con <code class="docutils literal notranslate"><span class="pre">operator</span></code> (más sobre esto más adelante)</li>
+</ul>
+<p>En general para recorrer los elementos de un array se pueden hacer tres cosas</p>
+<ul class="simple">
+<li>Recorrer los objetos del array.</li>
+<li>Recorrer las posiciones del array y recuperar los objetos nosotros mismos (se puede usar la propiedad <code class="docutils literal notranslate"><span class="pre">indices</span></code> de los arrays.)</li>
+<li>Recorrer el array obteniendo posiciones y objetos a la vez con <code class="docutils literal notranslate"><span class="pre">withIndex</span></code>.</li>
+</ul>
+<p>A continuación mostramos un ejemplo de los tres.</p>
+</div>
+<div class="section" id="bucles-while">
+<h2><a class="toc-backref" href="#id5">Bucles <code class="docutils literal notranslate"><span class="pre">while</span></code></a><a class="headerlink" href="#bucles-while" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="ruptura-de-flujo-break-y-continue">
+<h2><a class="toc-backref" href="#id6">Ruptura de flujo: <code class="docutils literal notranslate"><span class="pre">break</span></code> y <code class="docutils literal notranslate"><span class="pre">continue</span></code></a><a class="headerlink" href="#ruptura-de-flujo-break-y-continue" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Apuntes Kotlin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cap1_sintaxis_basica/cap1.html">Sintaxis básica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cap2_fundamentos/cap2.html">Fundamentos del lenguaje</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sentencias del lenguaje</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#decisiones-con-if">Decisiones con <code class="docutils literal notranslate"><span class="pre">if</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decisiones-multiples-con-when">Decisiones multiples con <code class="docutils literal notranslate"><span class="pre">when</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bucles-con-for">Bucles con <code class="docutils literal notranslate"><span class="pre">for</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bucles-while">Bucles <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ruptura-de-flujo-break-y-continue">Ruptura de flujo: <code class="docutils literal notranslate"><span class="pre">break</span></code> y <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../cap2_fundamentos/cap2.html" title="capítulo anterior">Fundamentos del lenguaje</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Oscar.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/cap3_sentencias_lenguaje/cap3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

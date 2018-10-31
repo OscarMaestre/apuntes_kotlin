@@ -9,7 +9,7 @@ all: cadenas_basicas.jar programa_1_saludo.jar programa_2_saludo_selectivo.jar \
         programa_7_adivina_numeros.jar programa_8_bisiestos.jar
 
 .kt.jar:
-	$(KOTLINC) $^ -include-runtime -d $@
+	$(KOTLINC) $^ -include-runtime -d $@ -jdk-home /home/usuario/jdk
 
 clean:
 	rm *.jar
