@@ -159,7 +159,7 @@ Para crear vectores se pueden usar varias posibilidades, entre ellas:
 
 A continuación se muestran dos maneras de crear vectores
 
-.. literalinclude: cap2_fundamentos/ejemplos/vectores.kt
+.. literalinclude: cap2_fundamentos/ejemplos/ejemplo_vectores.kt
 
 Y el resultado de este programa es:
 
@@ -334,7 +334,7 @@ Este código viene a decir algo así como: *"si saludo no es null tomar su lengt
 Expresiones y sentencias
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-En los próximos capítulos se hará mucho hincapie en las "expresiones" y las "sentencias". Aunque algunas personas usan ambas palabras indistintamente **no son lo mismo*.
+En los próximos capítulos se hará mucho hincapie en las "expresiones" y las "sentencias". Aunque algunas personas usan ambas palabras indistintamente **no son lo mismo**.
 
 * Una expresión **devuelve un valor**.
 * Una sentencia **ejecuta una tarea**.
